@@ -4,32 +4,34 @@
 // Internal details; most calling programs do not need this header,
 // unless using verilator public meta comments.
 
-#ifndef _VTB__SYMS_H_
-#define _VTB__SYMS_H_  // guard
+#ifndef VERILATED_VTB__SYMS_H_
+#define VERILATED_VTB__SYMS_H_  // guard
 
-#include "verilated_heavy.h"
+#include "verilated.h"
 
-// INCLUDE MODULE CLASSES
+// INCLUDE MODEL CLASS
+
 #include "Vtb.h"
 
-// SYMS CLASS
-class Vtb__Syms : public VerilatedSyms {
+// INCLUDE MODULE CLASSES
+#include "Vtb___024root.h"
+
+// SYMS CLASS (contains all model state)
+class Vtb__Syms final : public VerilatedSyms {
   public:
-    
-    // LOCAL STATE
-    const char* __Vm_namep;
-    bool __Vm_didInit;
-    
-    // SUBCELL STATE
-    Vtb*                           TOPp;
-    
-    // CREATORS
-    Vtb__Syms(Vtb* topp, const char* namep);
-    ~Vtb__Syms() {}
-    
+    // INTERNAL STATE
+    Vtb* const __Vm_modelp;
+    bool __Vm_didInit = false;
+
+    // MODULE INSTANCE STATE
+    Vtb___024root                  TOP;
+
+    // CONSTRUCTORS
+    Vtb__Syms(VerilatedContext* contextp, const char* namep, Vtb* modelp);
+    ~Vtb__Syms();
+
     // METHODS
-    inline const char* name() { return __Vm_namep; }
-    
+    const char* name() { return TOP.name(); }
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 #endif  // guard
